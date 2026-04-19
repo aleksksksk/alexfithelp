@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerlifting Program</title>
+
+    <!-- ШРИФТ -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Manrope', sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        /* HEADER (как в cardio) */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+            .header h1 {
+                color: #ff4444;
+                font-size: 36px;
+                font-weight: 700;
+            }
+
+        /* BACK КНОПКА (та же логика, но красная) */
+        .back {
+            position: absolute;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.05);
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .back::before {
+                content: "←";
+                transition: 0.3s;
+            }
+
+            .back:hover {
+                background: rgba(255,68,68,0.15);
+                color: #ff4444;
+                border-color: rgba(255,68,68,0.4);
+            }
+
+                .back:hover::before {
+                    transform: translateX(-3px);
+                }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        /* БЛОК В РАЗРАБОТКЕ */
+        .coming-block {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .coming-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .coming-title {
+            color: #ff4444;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .coming-text {
+            opacity: 0.7;
+            max-width: 420px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .week-title {
+            background: #ff4444;
+            color: #111;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .toggle-btn {
+            margin-top: 30px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: transparent;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            cursor: not-allowed;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a class="back" href="index.html">Back</a>
+        <h1>Powerlifting Program ⚡</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+
+            <h2>Strength Cycle</h2>
+
+            <div class="coming-block">
+
+                <div class="coming-icon">⚡</div>
+
+                <div class="week-title">POWERLIFTING</div>
+
+                <h3 class="coming-title">In Development</h3>
+
+                <p class="coming-text">
+                    Powerlifting program is currently being built.
+                    Advanced strength system and exercise selection coming soon.
+                </p>
+
+                <button class="toggle-btn">
+                    Coming Soon
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

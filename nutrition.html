@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        /* HEADER КАК В CARDIO */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* BACK КНОПКА (ОДИН В ОДИН) */
+        .back {
+            position: absolute;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.05);
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .back::before {
+                content: "←";
+                transition: 0.3s;
+            }
+
+            .back:hover {
+                background: rgba(34,255,153,0.15); /* под цвет nutrition */
+                color: #22ff99;
+                border-color: rgba(34,255,153,0.4);
+            }
+
+                .back:hover::before {
+                    transform: translateX(-3px);
+                }
+        /* sections */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+            .card:hover {
+                border-color: #22ff99;
+                transform: translateY(-5px);
+            }
+
+            .card h2 {
+                color: #22ff99;
+                margin-bottom: 10px;
+            }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            background: rgba(34,255,153,0.15);
+            color: #22ff99;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a class="back" href="index.html">Back</a>
+
+        <div>
+            <h1>Nutrition Guide </h1>
+            <p>Build muscle, cut fat, and control your body composition</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- BULKING -->
+        <div class="card" id="bulking">
+            <div class="tag">MASS GAIN</div>
+            <h2>Bulking (Muscle Gain)</h2>
+
+            <p>
+                To build muscle mass, you need a consistent calorie surplus and proper macronutrient distribution:
+                protein, fats, and carbohydrates.
+            </p>
+
+            <p>
+                The basic principle is simple — you eat more than you burn, but in a structured way, not randomly.
+                Calories provide energy and mass, protein builds muscle, fats support hormones, and carbohydrates fuel strength and performance.
+            </p>
+
+            <p>
+                In simple terms, bulking is a controlled “slight surplus” every day — not overeating.
+            </p>
+
+            <h3>Macronutrient Breakdown</h3>
+
+            <ul>
+                <li>Protein: ~2g per kg of body weight (muscle building material)</li>
+                <li>Fats: ~0.9g per kg (hormonal support, testosterone balance)</li>
+                <li>Carbohydrates: remaining calories (energy & training performance)</li>
+            </ul>
+
+            <p>
+                Muscle growth is not about perfect food — it is about consistency.
+                Stable calories, stable protein intake, and no long-term deficits.
+            </p>
+
+            <h3>Bulking Macro Table</h3>
+
+            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
+                <tr style="color:#22ff99; text-align:left;">
+                    <th>Weight</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Fats</th>
+                    <th>Carbs</th>
+                </tr>
+                <tr><td>50 kg</td><td>1950 kcal</td><td>100g</td><td>45g</td><td>286g</td></tr>
+                <tr><td>60 kg</td><td>2280 kcal</td><td>120g</td><td>54g</td><td>329g</td></tr>
+                <tr><td>70 kg</td><td>2610 kcal</td><td>140g</td><td>63g</td><td>371g</td></tr>
+                <tr><td>80 kg</td><td>2940 kcal</td><td>160g</td><td>72g</td><td>413g</td></tr>
+                <tr><td>90 kg</td><td>3270 kcal</td><td>180g</td><td>81g</td><td>455g</td></tr>
+                <tr><td>100 kg</td><td>3600 kcal</td><td>200g</td><td>90g</td><td>498g</td></tr>
+            </table>
+        </div>
+
+        <!-- CUTTING -->
+        <div class="card" id="cutting">
+            <div class="tag">FAT LOSS</div>
+            <h2>Cutting (Body Fat Reduction)</h2>
+
+            <p>
+                Cutting is the process of reducing body fat percentage while preserving as much muscle mass as possible.
+                The foundation of this strategy is a negative energy balance, where energy expenditure exceeds calorie intake.
+            </p>
+
+            <p>
+                Calorie balance is the key factor that determines the speed and quality of fat loss.
+            </p>
+
+            <h3>Nutrition Principles</h3>
+
+            <ul>
+                <li><b>Protein:</b> muscle preservation and anti-catabolic protection</li>
+                <li><b>Fats:</b> hormonal function and overall health</li>
+                <li><b>Carbohydrates:</b> adjustable energy source reduced over time</li>
+            </ul>
+
+            <p>
+                From a nutrition science perspective, optimal macronutrient ranges during cutting are:
+            </p>
+
+            <ul>
+                <li>Protein: 2.0–2.5 g per kg body weight</li>
+                <li>Fats: 0.7–0.9 g per kg body weight</li>
+                <li>Carbohydrates: remaining calories after protein and fats</li>
+            </ul>
+
+            <p>
+                A calorie deficit of 15–25% from maintenance is generally optimal.
+                More aggressive deficits increase the risk of muscle loss and strength decline.
+            </p>
+
+            <h3>Cutting Macro Table</h3>
+
+            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
+                <tr style="color:#22ff99; text-align:left;">
+                    <th>Weight</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Fats</th>
+                    <th>Carbs</th>
+                </tr>
+                <tr><td>50 kg</td><td>1700 kcal</td><td>110g</td><td>40g</td><td>200g</td></tr>
+                <tr><td>60 kg</td><td>2000 kcal</td><td>130g</td><td>48g</td><td>235g</td></tr>
+                <tr><td>70 kg</td><td>2300 kcal</td><td>150g</td><td>56g</td><td>270g</td></tr>
+                <tr><td>80 kg</td><td>2600 kcal</td><td>170g</td><td>64g</td><td>305g</td></tr>
+                <tr><td>90 kg</td><td>2900 kcal</td><td>190g</td><td>72g</td><td>340g</td></tr>
+                <tr><td>100 kg</td><td>3200 kcal</td><td>210g</td><td>80g</td><td>375g</td></tr>
+            </table>
+        </div>
+        <!-- WEIGHT LOSS -->
+        <div class="card" id="weightloss">
+            <div class="tag">WEIGHT LOSS</div>
+            <h2>Weight Loss (Fat Reduction)</h2>
+
+            <p>
+                Weight loss is the process of reducing total body weight through a calorie deficit,
+                where the body uses fat stores as its primary energy source.
+            </p>
+
+            <p>
+                Unlike competitive “cutting,” this approach focuses not only on preserving muscle mass
+                but also on sustainable and comfortable long-term weight reduction without extreme restrictions.
+            </p>
+
+            <p>
+                Calorie balance is the main regulator of body weight — if you consume fewer calories than you burn, weight decreases.
+            </p>
+
+            <h3>Nutrition Principles</h3>
+
+            <ul>
+                <li>Moderate calorie deficit: −10% to −20% of maintenance</li>
+                <li>Focus on sustainability and long-term adherence</li>
+                <li>High satiety foods to reduce hunger</li>
+            </ul>
+
+            <p>
+                From a nutrition science perspective, macronutrients are distributed as follows:
+            </p>
+
+            <ul>
+                <li><b>Protein:</b> slightly elevated for muscle preservation and satiety</li>
+                <li><b>Fats:</b> not overly restricted to maintain hormonal health</li>
+                <li><b>Carbohydrates:</b> adjusted based on activity level and deficit size</li>
+            </ul>
+
+            <h3>Macro Guidelines</h3>
+
+            <ul>
+                <li>Protein: 1.6–2.2 g per kg body weight</li>
+                <li>Fats: 0.8–1.0 g per kg body weight</li>
+                <li>Carbohydrates: remaining calories</li>
+            </ul>
+
+            <h3>Weight Loss Macro Table</h3>
+
+            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
+                <tr style="color:#22ff99; text-align:left;">
+                    <th>Weight</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Fats</th>
+                    <th>Carbs</th>
+                </tr>
+                <tr><td>50 kg</td><td>1650 kcal</td><td>90g</td><td>45g</td><td>190g</td></tr>
+                <tr><td>60 kg</td><td>1950 kcal</td><td>110g</td><td>54g</td><td>220g</td></tr>
+                <tr><td>70 kg</td><td>2250 kcal</td><td>130g</td><td>63g</td><td>250g</td></tr>
+                <tr><td>80 kg</td><td>2550 kcal</td><td>150g</td><td>72g</td><td>280g</td></tr>
+                <tr><td>90 kg</td><td>2850 kcal</td><td>170g</td><td>81g</td><td>310g</td></tr>
+                <tr><td>100 kg</td><td>3150 kcal</td><td>190g</td><td>90g</td><td>340g</td></tr>
+            </table>
+        </div>
+
+    </div>
+    <script>
+window.onload = function () {
+    const hash = window.location.hash;
+    if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+};
+    </script>
+
+</body>
+</html>

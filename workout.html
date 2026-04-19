@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plan</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+            header h1 {
+                color: #22ff99;
+                font-size: 36px;
+            }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(34,255,153,0.15);
+            color: #22ff99;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        /* 👇 ОБЕРТКА ДЛЯ СКРЫТИЯ */
+        .table-wrapper {
+            max-height: 400px;
+            overflow: hidden;
+            transition: 0.4s ease;
+        }
+
+            .table-wrapper.expanded {
+                max-height: 5000px;
+            }
+
+        .workout-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+            .workout-table td {
+                padding: 10px;
+                border-bottom: 1px solid rgba(255,255,255,0.08);
+            }
+
+        .week td {
+            background: #22ff99;
+            color: #111;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .day td {
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+        }
+
+        /* 👇 КНОПКА РАЗВОРОТА */
+        .toggle-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: transparent;
+            border: 1px solid #22ff99;
+            color: #22ff99;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+            .toggle-btn:hover {
+                background: #22ff99;
+                color: #111;
+            }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: #22ff99;
+            color: #111;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Bodybuilding Program 💪</h1>
+        <a class="back" href="index.html">← Back</a>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>8 Week Program</h2>
+
+            <!-- 👇 ОБЕРТКА -->
+            <div class="table-wrapper" id="table1">
+
+                <table class="workout-table">
+                    <tr style="color:#22ff99; font-weight:600;">
+                        <td>Exercise</td>
+                        <td>Intensity</td>
+                        <td>Sets</td>
+                        <td>Reps</td>
+                    </tr>
+
+                    <tr class="week"><td colspan="4">Week 1</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>12-15</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>12-15</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Medium</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>3</td><td>12-15</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Heavy</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <!-- WEEK 2 -->
+                    <tr class="week"><td colspan="4">Week 2</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Heavy</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Light</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Leg Extension</td><td>Heavy</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Heavy</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Heavy</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Heavy</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>8-12</td></tr>
+
+                    <!-- WEEK 3 -->
+                    <tr class="week"><td colspan="4">Week 3</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Light</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Light</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+
+                    <!-- WEEK 4 -->
+                    <tr class="week"><td colspan="4">Week 4</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Heavy</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Dumbbell Curl (Supinated)</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lateral Raises</td><td>Light</td><td>3</td><td>12-15</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>French Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <!-- WEEK 5 -->
+                    <tr class="week"><td colspan="4">Week 5</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Light</td><td>3</td><td>6-8</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>6-8</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Dumbbell Curl (Supinated)</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Lateral Raises</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>French Press</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>6-8</td></tr>
+
+                    <!-- WEEK 6 -->
+                    <tr class="week"><td colspan="4">Week 6</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>12-15</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Dumbbell Curl (Supinated)</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Lateral Raises</td><td>Medium</td><td>3</td><td>12-15</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Seated Row</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>French Press</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>6-8</td></tr>
+
+                    <!-- WEEK 7 -->
+                    <tr class="week"><td colspan="4">Week 7</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Dumbbell Curl (Supinated)</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Lateral Raises</td><td>Heavy</td><td>4</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Seated Row</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>French Press</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+
+                    <!-- WEEK 8 -->
+                    <tr class="week"><td colspan="4">Week 8</td></tr>
+                    <tr class="day"><td colspan="4">Monday</td></tr>
+                    <tr><td>Bench Press</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Lat Pulldown</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Cable Triceps Extension</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Wednesday</td></tr>
+                    <tr><td>Squat</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Romanian Deadlift</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>Seated Barbell Press</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Dumbbell Curl (Supinated)</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Lateral Raises</td><td>Medium</td><td>4</td><td>8-12</td></tr>
+
+                    <tr class="day"><td colspan="4">Friday</td></tr>
+                    <tr><td>Incline Bench (30°)</td><td>Medium</td><td>4</td><td>6-8</td></tr>
+                    <tr><td>Seated Row</td><td>Heavy</td><td>5</td><td>6-8</td></tr>
+                    <tr><td>French Press</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Leg Extension</td><td>Heavy</td><td>5</td><td>8-12</td></tr>
+                    <tr><td>Leg Curl</td><td>Light</td><td>3</td><td>8-12</td></tr>
+                    </table>
+
+</div>
+
+            <!-- 👇 КНОПКА -->
+            <button class="toggle-btn" onclick="toggleTable('table1', this)">
+                Show More
+            </button>
+
+            <a href="full_workout_program_colored.xlsx" download class="download-btn">
+                📥 Download Excel
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTable(id, btn) {
+            const table = document.getElementById(id);
+
+            table.classList.toggle("expanded");
+
+            if (table.classList.contains("expanded")) {
+                btn.innerText = "Show Less";
+            } else {
+                btn.innerText = "Show More";
+            }
+        }
+    </script>
+
+</body>
+</html>
