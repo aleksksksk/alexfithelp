@@ -1,22 +1,172 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powerlifting Program</title>
 
-    <!-- ШРИФТ -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        :root {
+            --red: #ff2d2d;
+        }
+
         body {
+            background: #0f0f0f;
+            color: white;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            font-family: 'Manrope', sans-serif;
+        }
+
+        /* NAV */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(15,15,15,0.9);
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-btn {
+            background: var(--red);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+        /* CARD */
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        /* INPUT */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 10px;
+            border: none;
             background: #111;
             color: white;
         }
 
-        /* HEADER (как в cardio) */
+        /* WEEK BUTTONS */
+        .week-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .week-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: #1a1a1a;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .week-btn.active {
+                background: var(--red);
+                color: black;
+                box-shadow: 0 0 12px rgba(255,45,45,0.7);
+            }
+
+        /* BUTTON */
+        .calc {
+            width: 100%;
+            background: var(--red);
+            border: none;
+            padding: 12px;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* TABLE */
+        .table-card {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        select {
+            background: #111;
+            color: white;
+            border: none;
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .week-selector {
+            position: relative;
+            display: flex;
+            background: #1a1a1a;
+            border-radius: 999px;
+            padding: 5px;
+            margin: 15px 0;
+        }
+
+        .week-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: 600;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .week-indicator {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: calc(100% / 7 - 10px);
+            height: calc(100% - 10px);
+            background: var(--red);
+            border-radius: 999px;
+            transition: 0.3s;
+        }
+
         .header {
             display: flex;
             align-items: center;
@@ -26,12 +176,11 @@
         }
 
             .header h1 {
-                color: #ff4444;
+                color: var(--red);
                 font-size: 36px;
                 font-weight: 700;
             }
 
-        /* BACK КНОПКА (та же логика, но красная) */
         .back {
             position: absolute;
             left: 20px;
@@ -55,107 +204,186 @@
             }
 
             .back:hover {
-                background: rgba(255,68,68,0.15);
-                color: #ff4444;
-                border-color: rgba(255,68,68,0.4);
+                background: rgba(255,45,45,0.15);
+                color: var(--red);
+                border-color: rgba(255,45,45,0.4);
             }
 
                 .back:hover::before {
                     transform: translateX(-3px);
                 }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 24px;
-        }
-
-        /* БЛОК В РАЗРАБОТКЕ */
-        .coming-block {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .coming-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        .coming-title {
-            color: #ff4444;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .coming-text {
-            opacity: 0.7;
-            max-width: 420px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-        .week-title {
-            background: #ff4444;
-            color: #111;
-            font-weight: 700;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .toggle-btn {
-            margin-top: 30px;
-            padding: 12px 20px;
-            border-radius: 999px;
-            background: transparent;
-            border: 1px solid #ff4444;
-            color: #ff4444;
-            cursor: not-allowed;
-            font-weight: 600;
-        }
     </style>
 </head>
 
 <body>
 
     <header class="header">
-        <a class="back" href="index.html">Back</a>
-        <h1>Powerlifting Program ⚡</h1>
-    </header>
+    <a class="back" href="index.html">Back</a>
+    <h1>Powerlifting Program</h1>
+</header>
 
-    <div class="container">
+        <div class="hero">
+            <h1>Powerlifting Program</h1>
+            <p>Enter your 5RM and calculate</p>
+        </div>
+
         <div class="card">
 
-            <h2>Strength Cycle</h2>
+            Deadlift <input id="dl" type="number">
+            Bench <input id="bp" type="number">
+            Squat <input id="sq" type="number">
 
-            <div class="coming-block">
+            <div class="week-selector">
+                <div class="week-indicator"></div>
 
-                <div class="coming-icon">⚡</div>
-
-                <div class="week-title">POWERLIFTING</div>
-
-                <h3 class="coming-title">In Development</h3>
-
-                <p class="coming-text">
-                    Powerlifting program is currently being built.
-                    Advanced strength system and exercise selection coming soon.
-                </p>
-
-                <button class="toggle-btn">
-                    Coming Soon
-                </button>
-
+                <button class="week-btn" onclick="setWeek(1)">1</button>
+                <button class="week-btn" onclick="setWeek(2)">2</button>
+                <button class="week-btn" onclick="setWeek(3)">3</button>
+                <button class="week-btn" onclick="setWeek(4)">4</button>
+                <button class="week-btn" onclick="setWeek(5)">5</button>
+                <button class="week-btn" onclick="setWeek(6)">6</button>
+                <button class="week-btn" onclick="setWeek(7)">7</button>
             </div>
 
+            <button class="calc" onclick="calc()">Calculate</button>
         </div>
-    </div>
+
+        <!-- DAY 1 -->
+        <div class="table-card">
+            <h2>Day 1</h2>
+            <table>
+                <tr><th>Exercise</th><th>Sets</th><th>Weight</th><th>RPE</th></tr>
+                <tr><td>Deadlift</td><td id="dl_sets">5x5</td><td id="dl_w"></td><td>-</td></tr>
+                <tr><td>Bench</td><td id="bp_sets">4x6</td><td id="bp_w"></td><td>-</td></tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option>Pull-ups</option>
+                            <option>Lat Pulldown</option>
+                            <option>Machine Vertical Row</option>
+                        </select>
+                    </td>
+                    <td id="acc1_sets">3x6-10</td>
+                    <td>-</td>
+                    <td id="acc1_rpe">7</td>
+                </tr>
+                <tr><td>Abs</td><td id="abs1_sets">3x6-10</td><td>-</td><td>8</td></tr>
+            </table>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="table-card">
+            <h2>Day 2</h2>
+            <table>
+                <tr><th>Exercise</th><th>Sets</th><th>Weight</th><th>RPE</th></tr>
+                <tr><td>Bench</td><td id="bp2_sets">5x5</td><td id="bp2_w"></td><td>-</td></tr>
+                <tr><td>Squat</td><td id="sq_sets">4x6</td><td id="sq_w"></td><td>-</td></tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option>Dumbbell Shoulder Press</option>
+                            <option>Handstand Push-ups</option>
+                            <option>Kettlebell Press</option>
+                            <option>One-arm Dumbbell Press</option>
+                            <option>Barbell Overhead Press</option>
+                        </select>
+                    </td>
+                    <td id="acc2_sets">3x6-10</td>
+                    <td>-</td>
+                    <td id="acc2_rpe">7</td>
+                </tr>
+                <tr><td>Arms</td><td id="arms_sets">3x6-10</td><td>-</td><td id="arms_rpe">8</td></tr>
+            </table>
+        </div>
+
+        <!-- DAY 3 -->
+        <div class="table-card">
+            <h2>Day 3</h2>
+            <table>
+                <tr><th>Exercise</th><th>Sets</th><th>Weight</th><th>RPE</th></tr>
+                <tr><td>Squat</td><td id="sq2_sets">5x5</td><td id="sq2_w"></td><td>-</td></tr>
+                <tr><td>Deadlift</td><td id="dl2_sets">4x6</td><td id="dl2_w"></td><td>-</td></tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option>Dumbbell Row</option>
+                            <option>Barbell Row</option>
+                            <option>Seated Cable Row</option>
+                            <option>Machine Row</option>
+                        </select>
+                    </td>
+                    <td id="acc3_sets">3x6-10</td>
+                    <td>-</td>
+                    <td id="acc3_rpe">7</td>
+                </tr>
+                <tr><td>Abs</td><td id="abs2_sets">3x6-10</td><td>-</td><td>8</td></tr>
+            </table>
+        </div>
+
+        <script>
+
+
+            let currentWeek = 1;
+
+            function setWeek(w) {
+                currentWeek = w;
+
+                let indicator = document.querySelector(".week-indicator");
+                let index = w - 1;
+                indicator.style.left = `calc(${index} * (100% / 7) + 5px)`;
+            }
+
+
+            function calc() {
+
+                let dl = parseFloat(document.getElementById("dl").value);
+                let bp = parseFloat(document.getElementById("bp").value);
+                let sq = parseFloat(document.getElementById("sq").value);
+                let week = currentWeek;
+
+                let heavy = { 1: 0.90, 2: 0.925, 3: 0.95, 4: 0.975, 5: 1, 6: 1.025, 7: 1.05 };
+                let light = { 1: 0.75, 2: 0.70, 3: 0.80, 4: 0.70, 5: 0.65, 6: 0.70, 7: 0.75 };
+
+                let heavySets = { 1: "5x5", 2: "5x5", 3: "5x5", 4: "5x5", 5: "5x5", 6: "3x3", 7: "2x2" };
+                let lightSets = { 1: "4x6", 2: "5x5", 3: "4x4", 4: "4x8", 5: "5x6", 6: "5x5", 7: "3x3" };
+
+                let h = heavy[week];
+                let l = light[week];
+
+                // weights
+                dl_w.innerText = (dl * h).toFixed(1) + " kg";
+                bp_w.innerText = (bp * l).toFixed(1) + " kg";
+                bp2_w.innerText = (bp * h).toFixed(1) + " kg";
+                sq_w.innerText = (sq * l).toFixed(1) + " kg";
+                sq2_w.innerText = (sq * h).toFixed(1) + " kg";
+                dl2_w.innerText = (dl * l).toFixed(1) + " kg";
+
+                // sets
+                dl_sets.innerText = heavySets[week];
+                bp2_sets.innerText = heavySets[week];
+                sq2_sets.innerText = heavySets[week];
+
+                bp_sets.innerText = lightSets[week];
+                sq_sets.innerText = lightSets[week];
+                dl2_sets.innerText = lightSets[week];
+
+                // reset accessories
+                acc1_sets.innerText = acc2_sets.innerText = acc3_sets.innerText = "3x6-10";
+                arms_sets.innerText = abs1_sets.innerText = abs2_sets.innerText = "3x6-10";
+
+                acc1_rpe.innerText = acc2_rpe.innerText = acc3_rpe.innerText = "7";
+                arms_rpe.innerText = "8";
+
+                // week 7
+                if (week == 7) {
+                    acc1_sets.innerText = acc2_sets.innerText = acc3_sets.innerText = "2x5";
+                    arms_sets.innerText = "2x6-10";
+
+                    acc1_rpe.innerText = acc2_rpe.innerText = acc3_rpe.innerText = "6";
+                    arms_rpe.innerText = "6";
+                }
+            }
+        </script>
 
 </body>
 </html>
