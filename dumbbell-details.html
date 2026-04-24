@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise details</title>
+    <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body style="--accent:#ffd640; --accent-rgb:255,214,64;">
+    <main class="site-shell">
+        <div class="site-topbar">
+            <a class="ghost-btn" href="javascript:history.back()" data-i18n="back">Back</a>
+            <div class="brand-pill">
+                <span class="brand-pill__dot"></span>
+                <span data-i18n="brand">Perfect Body Guide</span>
+            </div>
+            <div class="lang-switch">
+                <button type="button" data-set-lang="en">EN</button>
+                <button type="button" data-set-lang="ru">RU</button>
+            </div>
+        </div>
+
+        <section class="hero-panel hero-panel--single">
+            <div>
+                <div class="eyebrow" data-i18n="pageTitle">Exercise detail card</div>
+                <h1 class="hero-title" id="detailTitle">Exercise</h1>
+                <p class="hero-copy" id="detailSubtitle"></p>
+                <p class="hero-copy" data-i18n="pageCopy" style="margin-top:12px;">Use this page when you want the exercise name, main focus, and technical cue in one place.</p>
+            </div>
+        </section>
+
+        <section class="content-panel" id="detailCard" hidden>
+            <div class="resource-kicker" id="detailEyebrow">Chest</div>
+            <h2 class="table-title" data-i18n="summaryLabel">Overview</h2>
+            <p class="section-copy" id="detailSummary" style="margin-bottom:18px;"></p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <strong data-i18n="focusLabel">Focus</strong>
+                    <span id="detailFocus"></span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="cueLabel">Cue</strong>
+                    <span id="detailCue"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-panel" id="detailFallback" hidden>
+            <h2 class="table-title" data-i18n="fallbackTitle">Exercise was not found</h2>
+            <p class="section-copy" data-i18n="fallbackCopy">Open the card from one of the technique pages to load a specific exercise.</p>
+        </section>
+
+        <footer class="site-footer" data-i18n="footer">Language preference stays the same here too.</footer>
+    </main>
+
+    <script src="../assets/site.js"></script>
+    <script src="../assets/technique-data.js"></script>
+    <script src="../assets/technique-details.js"></script>
+    <script>
+        buildTechniqueDetails();
+    </script>
+</body>
+</html>

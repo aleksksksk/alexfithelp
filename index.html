@@ -1,255 +1,348 @@
-                <!DOCTYPE html>
-                <html lang="ru">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Your guide to the perfect body</title>
-                    <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Body Guide</title>
+    <link rel="stylesheet" href="assets/site.css">
+</head>
+<body style="--accent:#22ff99; --accent-rgb:34,255,153;">
+    <main class="site-shell">
+        <div class="site-topbar">
+            <div class="brand-pill">
+                <span class="brand-pill__dot"></span>
+                <span data-i18n="brand">Perfect Body Guide</span>
+            </div>
 
-                        :root {
-                            --green: #22ff99;
-                        }
+            <div class="lang-switch" aria-label="Language switcher">
+                <button type="button" data-set-lang="en">EN</button>
+                <button type="button" data-set-lang="ru">RU</button>
+            </div>
+        </div>
 
-                        * {
-                            margin: 0;
-                            padding: 0;
-                            box-sizing: border-box;
-                        }
+        <section class="hero-panel">
+            <div>
+                <div class="eyebrow" data-i18n="eyebrow">Training system</div>
+                <h1 class="hero-title" data-i18n="heroTitle">Build a stronger body with clear guidance</h1>
+                <p class="hero-copy" data-i18n="heroCopy">
+                    Move through exercise technique, nutrition strategy, and training plans inside one clean system. The language switch stays with you across pages, so the meaning of each section stays clear.
+                </p>
+                <div class="nav-pills" style="margin-top:22px;">
+                    <button type="button" class="nav-pill is-active" onclick="scrollToSection('technique')" data-i18n="navTechnique">Technique</button>
+                    <button type="button" class="nav-pill" onclick="scrollToSection('nutrition')" data-i18n="navNutrition">Nutrition</button>
+                    <button type="button" class="nav-pill" onclick="scrollToSection('workouts')" data-i18n="navWorkouts">Workouts</button>
+                </div>
+            </div>
 
-                        body {
-                            background: #111111;
-                            color: #ffffff;
-                            font-family: 'Inter', system-ui, sans-serif;
-                            line-height: 1.4;
-                            overflow-x: hidden;
-                        }
-
-                        /* Верхнее фиксированное меню */
-                        .top-nav {
-                            position: sticky;
-                            top: 0;
-                            background: rgba(17, 17, 17, 0.95);
-                            backdrop-filter: blur(10px);
-                            z-index: 100;
-                            padding: 16px 24px;
-                            display: flex;
-                            justify-content: center;
-                            gap: 12px;
-                            flex-wrap: wrap;
-                            border-bottom: 1px solid rgba(255,255,255,0.08);
-                        }
-
-                        .nav-btn {
-                            background: var(--green);
-                            color: #111111;
-                            border: none;
-                            padding: 12px 24px;
-                            border-radius: 9999px;
-                            font-weight: 600;
-                            font-size: 14px;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                        }
-
-                        .nav-btn.active {
-                            background: #111111;
-                            color: var(--green);
-                            box-shadow: 0 0 0 2px var(--green);
-                        }
-
-                        /* Герой */
-                        .hero {
-                            padding: 60px 24px 20px;
-                            text-align: center;
-                            max-width: 800px;
-                            margin: 0 auto;
-                        }
-
-                        .hero h1 {
-                            font-size: 42px;
-                            font-weight: 600;
-                            letter-spacing: -1.5px;
-                            margin-bottom: 10px;
-                        }
-
-                        .hero p {
-                            opacity: 0.7;
-                            font-size: 18px;
-                        }
-
-                        /* Секции */
-                        section {
-                            padding: 40px 24px;
-                            max-width: 1000px;
-                            margin: 0 auto;
-                        }
-
-                        /* КОНТЕЙНЕР ДЛЯ КНОПОК НАД КАРТОЧКАМИ — ТЕПЕРЬ ПО ЦЕНТРУ */
-                        .section-header-container {
-                            display: flex;
-                            justify-content: center; /* Центрирование кнопки */
-                            margin-bottom: 32px;
-                        }
-
-                        .section-header-btn {
-                            background: var(--green);
-                            color: #111111;
-                            font-weight: 600;
-                            font-size: 17px;
-                            padding: 14px 32px;
-                            border-radius: 9999px;
-                            border: none;
-                            box-shadow: 0 4px 15px rgba(34, 255, 153, 0.3);
-                            cursor: pointer;
-                        }
-
-                        /* Сетка карточек */
-                        .cards-grid {
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                            gap: 20px;
-                        }
-
-                        .card {
-                            background: #1a1a1a;
-                            border-radius: 24px;
-                            padding: 40px 24px;
-                            text-align: center;
-                            border: 1px solid rgba(255,255,255,0.06);
-                            transition: transform 0.3s ease;
-                        }
-
-                        .card:hover {
-                            transform: translateY(-8px);
-                            border-color: var(--green);
-                        }
-
-                        .card-icon {
-                            font-size: 50px;
-                            margin-bottom: 20px;
-                            display: flex;
-                            justify-content: center;
-                        }
-
-                        footer {
-                            padding: 60px 24px;
-                            text-align: center;
-                            opacity: 0.4;
-                            font-size: 13px;
-                        }
-
-                        @media (max-width: 600px) {
-                            .hero h1 { font-size: 32px; }
-                            .cards-grid { grid-template-columns: 1fr; }
-                        }
-                    </style>
-                </head>
-                <body>
-
-                    <div class="top-nav">
-                        <button class="nav-btn active" onclick="scrollToSection('section-0')">Exercise Technique</button>
-                        <button class="nav-btn" onclick="scrollToSection('section-1')">Nutrition</button>
-                        <button class="nav-btn" onclick="scrollToSection('section-2')">Workout Plan</button>
+            <div class="hero-side">
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <strong>3</strong>
+                        <span data-i18n="statAreas">Core sections of the site</span>
                     </div>
-
-                    <div class="hero">
-                        <h1>Your guide to the perfect body</h1>
-                        <p>Train smarter, eat better, become stronger</p>
+                    <div class="stat-card">
+                        <strong>95+</strong>
+                        <span data-i18n="statExercises">Technique cards and exercise references</span>
                     </div>
+                    <div class="stat-card">
+                        <strong>2</strong>
+                        <span data-i18n="statLanguages">Languages with saved preference</span>
+                    </div>
+                    <div class="stat-card">
+                        <strong>1</strong>
+                        <span data-i18n="statFlow">Single visual system across all pages</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <section id="section-0">
-                        <div class="section-header-container">
-                            <button class="section-header-btn">Exercise Technique</button>
-                        </div>
-                        <div class="cards-grid">
-                            <div class="card">
-                                <div class="card-icon">
-                                    <svg width="60" height="60" viewBox="0 0 100 100">
-                                        <rect x="10" y="40" width="20" height="20" rx="4" fill="#22ff99" />
-                                        <rect x="70" y="40" width="20" height="20" rx="4" fill="#22ff99" />
-                                        <rect x="30" y="45" width="40" height="10" fill="white" />
-                                    </svg>
-                                </div>
-                                <h3>Dumbbells</h3>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon">⚙️</div>
-                                <h3>Cable Machines</h3>
-                            </div>
-                            <div class="card">
-                                <div class="card-icon">🏋️‍♂️</div>
-                                <h3>Barbells</h3>
-                            </div>
-                        </div>
-                    </section>
+        <section class="section-panel" id="technique">
+            <div class="section-head">
+                <div>
+                    <h2 class="section-title" data-i18n="techniqueTitle">Exercise Technique</h2>
+                    <p class="section-copy" data-i18n="techniqueCopy">Choose the equipment type and open cards with cues, focus, and expanded details.</p>
+                </div>
+            </div>
 
-                    <section id="section-1">
-                        <div class="section-header-container">
-                            <button class="section-header-btn">Nutrition</button>
-                        </div>
+            <div class="resource-grid">
+                <a class="resource-card" href="technique/dumbbells.html">
+                    <div class="resource-kicker" data-i18n="kickerPopular">Most popular</div>
+                    <h3 data-i18n="cardDumbbellsTitle">Dumbbells</h3>
+                    <p data-i18n="cardDumbbellsCopy">Large library of dumbbell movements with hover-expand cards and a separate detail view.</p>
+                </a>
 
-                        <div class="cards-grid">
+                <a class="resource-card" href="technique/Barbells.html">
+                    <div class="resource-kicker" data-i18n="kickerStrength">Strength focus</div>
+                    <h3 data-i18n="cardBarbellsTitle">Barbells</h3>
+                    <p data-i18n="cardBarbellsCopy">Classic barbell lifts organized by muscle group with quick cues and bilingual labels.</p>
+                </a>
 
-                            <div class="card" onclick="goToPage('nutrition.html#bulking')">
-                                <div class="card-icon">🥩</div>
-                                <h3>Build Muscle</h3>
-                            </div>
+                <a class="resource-card" href="technique/Cable%20Machines.html">
+                    <div class="resource-kicker" data-i18n="kickerControl">Control work</div>
+                    <h3 data-i18n="cardCableTitle">Cable Machines</h3>
+                    <p data-i18n="cardCableCopy">Machine and cable exercises with smooth filtering and preserved exercise meaning in both languages.</p>
+                </a>
+            </div>
+        </section>
 
-                            <div class="card" onclick="goToPage('nutrition.html#cutting')">
-                                <div class="card-icon">🔥</div>
-                                <h3>Cut Fat</h3>
-                            </div>
+        <section class="section-panel" id="nutrition">
+            <div class="section-head">
+                <div>
+                    <h2 class="section-title" data-i18n="nutritionTitle">Nutrition</h2>
+                    <p class="section-copy" data-i18n="nutritionCopy">The nutrition page keeps your existing numbers and tables, but now presents them in a cleaner, easier-to-read layout.</p>
+                </div>
+            </div>
 
-                            <div class="card" onclick="goToPage('nutrition.html#weightloss')">
-                                <div class="card-icon">🥗</div>
-                                <h3>Lose Weight</h3>
-                            </div>
+            <div class="resource-grid">
+                <a class="resource-card" href="nutrition/nutrition.html#bulking">
+                    <div class="resource-kicker" data-i18n="kickerMass">Mass gain</div>
+                    <h3 data-i18n="cardBulkingTitle">Bulking</h3>
+                    <p data-i18n="cardBulkingCopy">Surplus-based nutrition with clear macro targets and a polished structure for quick reference.</p>
+                </a>
 
-                        </div>
-                    </section>
+                <a class="resource-card" href="nutrition/nutrition.html#cutting">
+                    <div class="resource-kicker" data-i18n="kickerCut">Fat loss</div>
+                    <h3 data-i18n="cardCuttingTitle">Cutting</h3>
+                    <p data-i18n="cardCuttingCopy">Deficit strategy, macro logic, and the same data now presented with better hierarchy.</p>
+                </a>
 
-                    <section id="section-2">
-                        <div class="section-header-container">
-                            <button class="section-header-btn">Workout Plan</button>
-                        </div>
-                        <div class="cards-grid">
-                            <div class="card" onclick="goToPage('workout.html#bodybuilding')">
-                                <div class="card-icon">🏆</div>
-                                <h3>Bodybuilding</h3>
-                            </div>
+                <a class="resource-card" href="nutrition/nutrition.html#weightloss">
+                    <div class="resource-kicker" data-i18n="kickerHealth">Lifestyle pace</div>
+                    <h3 data-i18n="cardWeightTitle">Weight Loss</h3>
+                    <p data-i18n="cardWeightCopy">Comfortable long-term reduction with tables and explanations that stay readable on mobile.</p>
+                </a>
+            </div>
+        </section>
 
-                            <div class="card" onclick="goToPage('cardio.html#cardio')">
-                                <div class="card-icon">🏃</div>
-                                <h3>Cardio</h3>
-                            </div>
+        <section class="section-panel" id="workouts">
+            <div class="section-head">
+                <div>
+                    <h2 class="section-title" data-i18n="workoutsTitle">Workout Plans</h2>
+                    <p class="section-copy" data-i18n="workoutsCopy">Open the plan format that fits your goal: bodybuilding structure, cardio progression, or powerlifting calculation.</p>
+                </div>
+            </div>
 
-                            <div class="card" onclick="goToPage('powerlifting.html#powerlifting')">
-                                <div class="card-icon">⚡</div>
-                                <h3>Powerlifting</h3>
-                            </div>
-                        </div>
-                    </section>
+            <div class="resource-grid">
+                <a class="resource-card" href="workout/workout.html">
+                    <div class="resource-kicker" data-i18n="kickerBodybuilding">Hypertrophy</div>
+                    <h3 data-i18n="cardWorkoutTitle">Bodybuilding Program</h3>
+                    <p data-i18n="cardWorkoutCopy">Your original 8-week table is preserved and restyled for easier scanning.</p>
+                </a>
 
-                    <footer>
-                        © 2026 Perfect Body Guide • All rights reserved
-                    </footer>
+                <a class="resource-card" href="workout/cardio.html">
+                    <div class="resource-kicker" data-i18n="kickerCardio">Conditioning</div>
+                    <h3 data-i18n="cardCardioTitle">Cardio Program</h3>
+                    <p data-i18n="cardCardioCopy">Cleaner progression view with expandable table and bilingual interface labels.</p>
+                </a>
 
-                    <script>
-                        function scrollToSection(id) {
-                            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                <a class="resource-card" href="workout/powerlifting.html">
+                    <div class="resource-kicker" data-i18n="kickerPower">Performance</div>
+                    <h3 data-i18n="cardPowerTitle">Powerlifting Program</h3>
+                    <p data-i18n="cardPowerCopy">Calculator, week selector, and accessories wrapped in a stronger layout.</p>
+                </a>
+            </div>
+        </section>
 
-                            // Обновление активной кнопки в меню
-                            document.querySelectorAll('.nav-btn').forEach(btn => {
-                                btn.classList.remove('active');
-                                if (btn.getAttribute('onclick').includes(id)) btn.classList.add('active');
-                            });
-                        }
-                    </script>
-                    <script>
-                        function goToPage(page) {
-                            window.location.href = page;
-                        }
-                    </script>
-                </body>
-                </html>
+        <footer class="site-footer" data-i18n="footer">Perfect Body Guide, redesigned with a shared style and persistent language switching.</footer>
+    </main>
+
+    <script src="assets/site.js"></script>
+    <script>
+        const translations = {
+            __title: {
+                en: "Perfect Body Guide",
+                ru: "Гид по идеальному телу"
+            },
+            brand: {
+                en: "Perfect Body Guide",
+                ru: "Гид по идеальному телу"
+            },
+            eyebrow: {
+                en: "Training system",
+                ru: "Тренировочная система"
+            },
+            heroTitle: {
+                en: "Build a stronger body with clear guidance",
+                ru: "Строй сильное тело по понятной системе"
+            },
+            heroCopy: {
+                en: "Move through exercise technique, nutrition strategy, and training plans inside one clean system. The language switch stays with you across pages, so the meaning of each section stays clear.",
+                ru: "Переходи между техникой упражнений, питанием и тренировочными планами в одной цельной системе. Переключатель языка сохраняется между страницами, поэтому смысл каждой секции остается точным."
+            },
+            navTechnique: {
+                en: "Technique",
+                ru: "Техника"
+            },
+            navNutrition: {
+                en: "Nutrition",
+                ru: "Питание"
+            },
+            navWorkouts: {
+                en: "Workouts",
+                ru: "Планы"
+            },
+            statAreas: {
+                en: "Core sections of the site",
+                ru: "Ключевые разделы сайта"
+            },
+            statExercises: {
+                en: "Technique cards and exercise references",
+                ru: "Карточек и справочников по упражнениям"
+            },
+            statLanguages: {
+                en: "Languages with saved preference",
+                ru: "Языка с сохранением выбора"
+            },
+            statFlow: {
+                en: "Single visual system across all pages",
+                ru: "Единая визуальная система на всех страницах"
+            },
+            techniqueTitle: {
+                en: "Exercise Technique",
+                ru: "Техника упражнений"
+            },
+            techniqueCopy: {
+                en: "Choose the equipment type and open cards with cues, focus, and expanded details.",
+                ru: "Выбери тип оборудования и открывай карточки с акцентами, подсказками и расширенными описаниями."
+            },
+            kickerPopular: {
+                en: "Most popular",
+                ru: "Самый популярный"
+            },
+            kickerStrength: {
+                en: "Strength focus",
+                ru: "Силовой акцент"
+            },
+            kickerControl: {
+                en: "Control work",
+                ru: "Контроль движения"
+            },
+            cardDumbbellsTitle: {
+                en: "Dumbbells",
+                ru: "Гантели"
+            },
+            cardDumbbellsCopy: {
+                en: "Large library of dumbbell movements with hover-expand cards and a separate detail view.",
+                ru: "Большая библиотека движений с гантелями, карточками с раскрытием по наведению и отдельной детальной страницей."
+            },
+            cardBarbellsTitle: {
+                en: "Barbells",
+                ru: "Штанги"
+            },
+            cardBarbellsCopy: {
+                en: "Classic barbell lifts organized by muscle group with quick cues and bilingual labels.",
+                ru: "Классические упражнения со штангой по мышечным группам, с короткими подсказками и двуязычными названиями."
+            },
+            cardCableTitle: {
+                en: "Cable Machines",
+                ru: "Блочные тренажеры"
+            },
+            cardCableCopy: {
+                en: "Machine and cable exercises with smooth filtering and preserved exercise meaning in both languages.",
+                ru: "Упражнения на блоках и тренажерах с плавной фильтрацией и сохраненным смыслом названий на двух языках."
+            },
+            nutritionTitle: {
+                en: "Nutrition",
+                ru: "Питание"
+            },
+            nutritionCopy: {
+                en: "The nutrition page keeps your existing numbers and tables, but now presents them in a cleaner, easier-to-read layout.",
+                ru: "Страница питания сохраняет текущие числа и таблицы, но теперь подает их в более чистом и удобном формате."
+            },
+            kickerMass: {
+                en: "Mass gain",
+                ru: "Набор массы"
+            },
+            kickerCut: {
+                en: "Fat loss",
+                ru: "Снижение жира"
+            },
+            kickerHealth: {
+                en: "Lifestyle pace",
+                ru: "Комфортный темп"
+            },
+            cardBulkingTitle: {
+                en: "Bulking",
+                ru: "Набор"
+            },
+            cardBulkingCopy: {
+                en: "Surplus-based nutrition with clear macro targets and a polished structure for quick reference.",
+                ru: "Питание на профиците с понятными целями по макронутриентам и удобной структурой для быстрого просмотра."
+            },
+            cardCuttingTitle: {
+                en: "Cutting",
+                ru: "Сушка"
+            },
+            cardCuttingCopy: {
+                en: "Deficit strategy, macro logic, and the same data now presented with better hierarchy.",
+                ru: "Стратегия дефицита, логика макросов и те же данные, но в более удобной иерархии."
+            },
+            cardWeightTitle: {
+                en: "Weight Loss",
+                ru: "Снижение веса"
+            },
+            cardWeightCopy: {
+                en: "Comfortable long-term reduction with tables and explanations that stay readable on mobile.",
+                ru: "Комфортное долгосрочное снижение веса с таблицами и пояснениями, которые удобно читать и на телефоне."
+            },
+            workoutsTitle: {
+                en: "Workout Plans",
+                ru: "Тренировочные планы"
+            },
+            workoutsCopy: {
+                en: "Open the plan format that fits your goal: bodybuilding structure, cardio progression, or powerlifting calculation.",
+                ru: "Открывай формат плана под свою цель: бодибилдинг, кардио-прогрессия или пауэрлифтинг-калькулятор."
+            },
+            kickerBodybuilding: {
+                en: "Hypertrophy",
+                ru: "Гипертрофия"
+            },
+            kickerCardio: {
+                en: "Conditioning",
+                ru: "Выносливость"
+            },
+            kickerPower: {
+                en: "Performance",
+                ru: "Результат"
+            },
+            cardWorkoutTitle: {
+                en: "Bodybuilding Program",
+                ru: "Программа по бодибилдингу"
+            },
+            cardWorkoutCopy: {
+                en: "Your original 8-week table is preserved and restyled for easier scanning.",
+                ru: "Твоя исходная 8-недельная таблица сохранена, но теперь читается заметно легче."
+            },
+            cardCardioTitle: {
+                en: "Cardio Program",
+                ru: "Кардио-программа"
+            },
+            cardCardioCopy: {
+                en: "Cleaner progression view with expandable table and bilingual interface labels.",
+                ru: "Более чистый вид прогрессии, разворачиваемая таблица и двуязычные элементы интерфейса."
+            },
+            cardPowerTitle: {
+                en: "Powerlifting Program",
+                ru: "Пауэрлифтинг-программа"
+            },
+            cardPowerCopy: {
+                en: "Calculator, week selector, and accessories wrapped in a stronger layout.",
+                ru: "Калькулятор, выбор недели и аксессуары собраны в более сильной и современной подаче."
+            },
+            footer: {
+                en: "Perfect Body Guide, redesigned with a shared style and persistent language switching.",
+                ru: "Perfect Body Guide с единым стилем и переключением языка, которое сохраняется между страницами."
+            }
+        };
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: "smooth", block: "start" });
+            document.querySelectorAll(".nav-pill").forEach((button) => {
+                button.classList.toggle("is-active", button.getAttribute("onclick").includes(id));
+            });
+        }
+
+        SiteApp.initPage({ translations });
+    </script>
+</body>
+</html>

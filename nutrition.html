@@ -1,300 +1,345 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #111;
-            color: white;
-        }
-
-        /* HEADER КАК В CARDIO */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        /* BACK КНОПКА (ОДИН В ОДИН) */
-        .back {
-            position: absolute;
-            left: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.05);
-            color: #ffffff;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.12);
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-            .back::before {
-                content: "←";
-                transition: 0.3s;
-            }
-
-            .back:hover {
-                background: rgba(34,255,153,0.15); /* под цвет nutrition */
-                color: #22ff99;
-                border-color: rgba(34,255,153,0.4);
-            }
-
-                .back:hover::before {
-                    transform: translateX(-3px);
-                }
-        /* sections */
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-            transition: 0.3s;
-        }
-
-            .card:hover {
-                border-color: #22ff99;
-                transform: translateY(-5px);
-            }
-
-            .card h2 {
-                color: #22ff99;
-                margin-bottom: 10px;
-            }
-
-        .tag {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 999px;
-            font-size: 12px;
-            background: rgba(34,255,153,0.15);
-            color: #22ff99;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            margin-top: 10px;
-            opacity: 0.85;
-            line-height: 1.6;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/site.css">
 </head>
-
-<body>
-    <header class="header">
-        <a class="back" href="index.html">Back</a>
-
-        <div>
-            <h1>Nutrition Guide </h1>
-            <p>Build muscle, cut fat, and control your body composition</p>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <!-- BULKING -->
-        <div class="card" id="bulking">
-            <div class="tag">MASS GAIN</div>
-            <h2>Bulking (Muscle Gain)</h2>
-
-            <p>
-                To build muscle mass, you need a consistent calorie surplus and proper macronutrient distribution:
-                protein, fats, and carbohydrates.
-            </p>
-
-            <p>
-                The basic principle is simple — you eat more than you burn, but in a structured way, not randomly.
-                Calories provide energy and mass, protein builds muscle, fats support hormones, and carbohydrates fuel strength and performance.
-            </p>
-
-            <p>
-                In simple terms, bulking is a controlled “slight surplus” every day — not overeating.
-            </p>
-
-            <h3>Macronutrient Breakdown</h3>
-
-            <ul>
-                <li>Protein: ~2g per kg of body weight (muscle building material)</li>
-                <li>Fats: ~0.9g per kg (hormonal support, testosterone balance)</li>
-                <li>Carbohydrates: remaining calories (energy & training performance)</li>
-            </ul>
-
-            <p>
-                Muscle growth is not about perfect food — it is about consistency.
-                Stable calories, stable protein intake, and no long-term deficits.
-            </p>
-
-            <h3>Bulking Macro Table</h3>
-
-            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
-                <tr style="color:#22ff99; text-align:left;">
-                    <th>Weight</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Fats</th>
-                    <th>Carbs</th>
-                </tr>
-                <tr><td>50 kg</td><td>1950 kcal</td><td>100g</td><td>45g</td><td>286g</td></tr>
-                <tr><td>60 kg</td><td>2280 kcal</td><td>120g</td><td>54g</td><td>329g</td></tr>
-                <tr><td>70 kg</td><td>2610 kcal</td><td>140g</td><td>63g</td><td>371g</td></tr>
-                <tr><td>80 kg</td><td>2940 kcal</td><td>160g</td><td>72g</td><td>413g</td></tr>
-                <tr><td>90 kg</td><td>3270 kcal</td><td>180g</td><td>81g</td><td>455g</td></tr>
-                <tr><td>100 kg</td><td>3600 kcal</td><td>200g</td><td>90g</td><td>498g</td></tr>
-            </table>
+<body style="--accent:#22ff99; --accent-rgb:34,255,153;">
+    <main class="site-shell">
+        <div class="site-topbar">
+            <a class="ghost-btn" href="../index.html" data-i18n="back">Back</a>
+            <div class="brand-pill">
+                <span class="brand-pill__dot"></span>
+                <span data-i18n="brand">Perfect Body Guide</span>
+            </div>
+            <div class="lang-switch">
+                <button type="button" data-set-lang="en">EN</button>
+                <button type="button" data-set-lang="ru">RU</button>
+            </div>
         </div>
 
-        <!-- CUTTING -->
-        <div class="card" id="cutting">
-            <div class="tag">FAT LOSS</div>
-            <h2>Cutting (Body Fat Reduction)</h2>
+        <section class="hero-panel">
+            <div>
+                <div class="eyebrow" data-i18n="eyebrow">Nutrition system</div>
+                <h1 class="hero-title" data-i18n="heroTitle">Nutrition guide</h1>
+                <p class="hero-copy" data-i18n="heroCopy">Your data stays the same. The page now presents mass gain, cutting, and long-term weight loss inside a clearer bilingual layout.</p>
+            </div>
 
-            <p>
-                Cutting is the process of reducing body fat percentage while preserving as much muscle mass as possible.
-                The foundation of this strategy is a negative energy balance, where energy expenditure exceeds calorie intake.
-            </p>
+            <div class="hero-side">
+                <div class="stat-card">
+                    <strong>3</strong>
+                    <span data-i18n="statA">Nutrition goals with preserved tables and numbers</span>
+                </div>
+                <div class="stat-card">
+                    <strong>6</strong>
+                    <span data-i18n="statB">Body-weight rows in every macro table</span>
+                </div>
+            </div>
+        </section>
 
-            <p>
-                Calorie balance is the key factor that determines the speed and quality of fat loss.
-            </p>
-
-            <h3>Nutrition Principles</h3>
-
-            <ul>
-                <li><b>Protein:</b> muscle preservation and anti-catabolic protection</li>
-                <li><b>Fats:</b> hormonal function and overall health</li>
-                <li><b>Carbohydrates:</b> adjustable energy source reduced over time</li>
-            </ul>
-
-            <p>
-                From a nutrition science perspective, optimal macronutrient ranges during cutting are:
-            </p>
-
-            <ul>
-                <li>Protein: 2.0–2.5 g per kg body weight</li>
-                <li>Fats: 0.7–0.9 g per kg body weight</li>
-                <li>Carbohydrates: remaining calories after protein and fats</li>
-            </ul>
-
-            <p>
-                A calorie deficit of 15–25% from maintenance is generally optimal.
-                More aggressive deficits increase the risk of muscle loss and strength decline.
-            </p>
-
-            <h3>Cutting Macro Table</h3>
-
-            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
-                <tr style="color:#22ff99; text-align:left;">
-                    <th>Weight</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Fats</th>
-                    <th>Carbs</th>
-                </tr>
-                <tr><td>50 kg</td><td>1700 kcal</td><td>110g</td><td>40g</td><td>200g</td></tr>
-                <tr><td>60 kg</td><td>2000 kcal</td><td>130g</td><td>48g</td><td>235g</td></tr>
-                <tr><td>70 kg</td><td>2300 kcal</td><td>150g</td><td>56g</td><td>270g</td></tr>
-                <tr><td>80 kg</td><td>2600 kcal</td><td>170g</td><td>64g</td><td>305g</td></tr>
-                <tr><td>90 kg</td><td>2900 kcal</td><td>190g</td><td>72g</td><td>340g</td></tr>
-                <tr><td>100 kg</td><td>3200 kcal</td><td>210g</td><td>80g</td><td>375g</td></tr>
-            </table>
-        </div>
-        <!-- WEIGHT LOSS -->
-        <div class="card" id="weightloss">
-            <div class="tag">WEIGHT LOSS</div>
-            <h2>Weight Loss (Fat Reduction)</h2>
-
-            <p>
-                Weight loss is the process of reducing total body weight through a calorie deficit,
-                where the body uses fat stores as its primary energy source.
-            </p>
-
-            <p>
-                Unlike competitive “cutting,” this approach focuses not only on preserving muscle mass
-                but also on sustainable and comfortable long-term weight reduction without extreme restrictions.
-            </p>
-
-            <p>
-                Calorie balance is the main regulator of body weight — if you consume fewer calories than you burn, weight decreases.
-            </p>
-
-            <h3>Nutrition Principles</h3>
-
-            <ul>
-                <li>Moderate calorie deficit: −10% to −20% of maintenance</li>
-                <li>Focus on sustainability and long-term adherence</li>
-                <li>High satiety foods to reduce hunger</li>
-            </ul>
-
-            <p>
-                From a nutrition science perspective, macronutrients are distributed as follows:
-            </p>
-
-            <ul>
-                <li><b>Protein:</b> slightly elevated for muscle preservation and satiety</li>
-                <li><b>Fats:</b> not overly restricted to maintain hormonal health</li>
-                <li><b>Carbohydrates:</b> adjusted based on activity level and deficit size</li>
-            </ul>
-
-            <h3>Macro Guidelines</h3>
-
-            <ul>
-                <li>Protein: 1.6–2.2 g per kg body weight</li>
-                <li>Fats: 0.8–1.0 g per kg body weight</li>
-                <li>Carbohydrates: remaining calories</li>
-            </ul>
-
-            <h3>Weight Loss Macro Table</h3>
-
-            <table style="width:100%; margin-top:10px; border-collapse: collapse; font-size:14px;">
-                <tr style="color:#22ff99; text-align:left;">
-                    <th>Weight</th>
-                    <th>Calories</th>
-                    <th>Protein</th>
-                    <th>Fats</th>
-                    <th>Carbs</th>
-                </tr>
-                <tr><td>50 kg</td><td>1650 kcal</td><td>90g</td><td>45g</td><td>190g</td></tr>
-                <tr><td>60 kg</td><td>1950 kcal</td><td>110g</td><td>54g</td><td>220g</td></tr>
-                <tr><td>70 kg</td><td>2250 kcal</td><td>130g</td><td>63g</td><td>250g</td></tr>
-                <tr><td>80 kg</td><td>2550 kcal</td><td>150g</td><td>72g</td><td>280g</td></tr>
-                <tr><td>90 kg</td><td>2850 kcal</td><td>170g</td><td>81g</td><td>310g</td></tr>
-                <tr><td>100 kg</td><td>3150 kcal</td><td>190g</td><td>90g</td><td>340g</td></tr>
-            </table>
+        <div class="nav-pills" style="margin-bottom:18px;">
+            <a class="nav-pill is-active" href="#bulking" data-i18n="navBulking">Bulking</a>
+            <a class="nav-pill" href="#cutting" data-i18n="navCutting">Cutting</a>
+            <a class="nav-pill" href="#weightloss" data-i18n="navWeightLoss">Weight loss</a>
         </div>
 
-    </div>
+        <section class="section-panel" id="bulking">
+            <div class="resource-kicker" data-i18n="tagBulking">Mass gain</div>
+            <h2 class="section-title" data-i18n="bulkingTitle">Bulking (Muscle Gain)</h2>
+            <p class="section-copy" data-i18n="bulkingP1">To build muscle mass, you need a consistent calorie surplus and proper macronutrient distribution: protein, fats, and carbohydrates.</p>
+            <p class="section-copy" data-i18n="bulkingP2" style="margin-top:12px;">The basic principle is simple: eat more than you burn, but in a structured way, not randomly. Calories provide energy and mass, protein builds muscle, fats support hormones, and carbohydrates fuel performance.</p>
+            <p class="section-copy" data-i18n="bulkingP3" style="margin-top:12px;">In simple terms, bulking is a controlled slight surplus every day, not overeating.</p>
+
+            <div class="feature-grid" style="margin:20px 0;">
+                <div class="feature-card">
+                    <strong data-i18n="macroProtein">Protein</strong>
+                    <span data-i18n="bulkingMacro1">Around 2 g per kg of body weight for muscle building material.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="macroFats">Fats</strong>
+                    <span data-i18n="bulkingMacro2">Around 0.9 g per kg for hormonal support and balance.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="macroCarbs">Carbohydrates</strong>
+                    <span data-i18n="bulkingMacro3">The remaining calories for energy and training output.</span>
+                </div>
+            </div>
+
+            <p class="section-copy" data-i18n="bulkingP4">Muscle growth is not about perfect food. It is about consistency, stable calories, and stable protein intake.</p>
+
+            <div class="table-panel" style="margin-top:20px;">
+                <h3 class="table-title" data-i18n="bulkingTableTitle">Bulking macro table</h3>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thWeight">Weight</th>
+                                <th data-i18n="thCalories">Calories</th>
+                                <th data-i18n="thProtein">Protein</th>
+                                <th data-i18n="thFats">Fats</th>
+                                <th data-i18n="thCarbs">Carbs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50 kg</td><td>1950 kcal</td><td>100 g</td><td>45 g</td><td>286 g</td></tr>
+                            <tr><td>60 kg</td><td>2280 kcal</td><td>120 g</td><td>54 g</td><td>329 g</td></tr>
+                            <tr><td>70 kg</td><td>2610 kcal</td><td>140 g</td><td>63 g</td><td>371 g</td></tr>
+                            <tr><td>80 kg</td><td>2940 kcal</td><td>160 g</td><td>72 g</td><td>413 g</td></tr>
+                            <tr><td>90 kg</td><td>3270 kcal</td><td>180 g</td><td>81 g</td><td>455 g</td></tr>
+                            <tr><td>100 kg</td><td>3600 kcal</td><td>200 g</td><td>90 g</td><td>498 g</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-panel" id="cutting">
+            <div class="resource-kicker" data-i18n="tagCutting">Fat loss</div>
+            <h2 class="section-title" data-i18n="cuttingTitle">Cutting (Body Fat Reduction)</h2>
+            <p class="section-copy" data-i18n="cuttingP1">Cutting is the process of reducing body fat percentage while preserving as much muscle mass as possible. The foundation is a negative energy balance.</p>
+            <p class="section-copy" data-i18n="cuttingP2" style="margin-top:12px;">Calorie balance is the main factor that determines the speed and quality of fat loss.</p>
+
+            <div class="feature-grid" style="margin:20px 0;">
+                <div class="feature-card">
+                    <strong data-i18n="principleProtein">Protein</strong>
+                    <span data-i18n="cuttingFeature1">Supports muscle retention and anti-catabolic protection.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="principleFats">Fats</strong>
+                    <span data-i18n="cuttingFeature2">Support hormonal function and overall health.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="principleCarbs">Carbohydrates</strong>
+                    <span data-i18n="cuttingFeature3">Act as the adjustable energy source during the deficit.</span>
+                </div>
+            </div>
+
+            <div class="note-banner" data-i18n="cuttingNote">A calorie deficit of 15 to 25 percent from maintenance is usually the best middle ground. Larger deficits increase the risk of muscle loss and strength decline.</div>
+
+            <div class="table-panel">
+                <h3 class="table-title" data-i18n="cuttingTableTitle">Cutting macro table</h3>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thWeight">Weight</th>
+                                <th data-i18n="thCalories">Calories</th>
+                                <th data-i18n="thProtein">Protein</th>
+                                <th data-i18n="thFats">Fats</th>
+                                <th data-i18n="thCarbs">Carbs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50 kg</td><td>1700 kcal</td><td>110 g</td><td>40 g</td><td>200 g</td></tr>
+                            <tr><td>60 kg</td><td>2000 kcal</td><td>130 g</td><td>48 g</td><td>235 g</td></tr>
+                            <tr><td>70 kg</td><td>2300 kcal</td><td>150 g</td><td>56 g</td><td>270 g</td></tr>
+                            <tr><td>80 kg</td><td>2600 kcal</td><td>170 g</td><td>64 g</td><td>305 g</td></tr>
+                            <tr><td>90 kg</td><td>2900 kcal</td><td>190 g</td><td>72 g</td><td>340 g</td></tr>
+                            <tr><td>100 kg</td><td>3200 kcal</td><td>210 g</td><td>80 g</td><td>375 g</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-panel" id="weightloss">
+            <div class="resource-kicker" data-i18n="tagWeightLoss">Weight loss</div>
+            <h2 class="section-title" data-i18n="weightLossTitle">Weight Loss (Fat Reduction)</h2>
+            <p class="section-copy" data-i18n="weightP1">Weight loss is the process of reducing total body weight through a calorie deficit, where the body uses stored energy to cover the gap.</p>
+            <p class="section-copy" data-i18n="weightP2" style="margin-top:12px;">Unlike aggressive cutting, this approach focuses on sustainability and comfortable long-term progress.</p>
+            <p class="section-copy" data-i18n="weightP3" style="margin-top:12px;">If you consistently consume fewer calories than you burn, body weight trends downward.</p>
+
+            <div class="feature-grid" style="margin:20px 0;">
+                <div class="feature-card">
+                    <strong data-i18n="weightFeatureTitle1">Moderate deficit</strong>
+                    <span data-i18n="weightFeature1">Usually 10 to 20 percent below maintenance.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="weightFeatureTitle2">Adherence</strong>
+                    <span data-i18n="weightFeature2">The plan should be sustainable enough to repeat week after week.</span>
+                </div>
+                <div class="feature-card">
+                    <strong data-i18n="weightFeatureTitle3">Satiety</strong>
+                    <span data-i18n="weightFeature3">High-satiety foods make long-term compliance much easier.</span>
+                </div>
+            </div>
+
+            <div class="table-panel">
+                <h3 class="table-title" data-i18n="weightTableTitle">Weight loss macro table</h3>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thWeight">Weight</th>
+                                <th data-i18n="thCalories">Calories</th>
+                                <th data-i18n="thProtein">Protein</th>
+                                <th data-i18n="thFats">Fats</th>
+                                <th data-i18n="thCarbs">Carbs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50 kg</td><td>1650 kcal</td><td>90 g</td><td>45 g</td><td>190 g</td></tr>
+                            <tr><td>60 kg</td><td>1950 kcal</td><td>110 g</td><td>54 g</td><td>220 g</td></tr>
+                            <tr><td>70 kg</td><td>2250 kcal</td><td>130 g</td><td>63 g</td><td>250 g</td></tr>
+                            <tr><td>80 kg</td><td>2550 kcal</td><td>150 g</td><td>72 g</td><td>280 g</td></tr>
+                            <tr><td>90 kg</td><td>2850 kcal</td><td>170 g</td><td>81 g</td><td>310 g</td></tr>
+                            <tr><td>100 kg</td><td>3150 kcal</td><td>190 g</td><td>90 g</td><td>340 g</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer" data-i18n="footer">Nutrition numbers stay intact while the wording and interface switch between languages.</footer>
+    </main>
+
+    <script src="../assets/site.js"></script>
     <script>
-window.onload = function () {
-    const hash = window.location.hash;
-    if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-};
-    </script>
+        const translations = {
+            __title: {
+                en: "Nutrition Guide",
+                ru: "Гид по питанию"
+            },
+            back: { en: "Back", ru: "Назад" },
+            brand: { en: "Perfect Body Guide", ru: "Гид по идеальному телу" },
+            eyebrow: { en: "Nutrition system", ru: "Система питания" },
+            heroTitle: { en: "Nutrition guide", ru: "Гид по питанию" },
+            heroCopy: {
+                en: "Your data stays the same. The page now presents mass gain, cutting, and long-term weight loss inside a clearer bilingual layout.",
+                ru: "Твои данные остаются прежними. Страница теперь подает набор, сушку и долгосрочное снижение веса в более чистом двуязычном формате."
+            },
+            statA: {
+                en: "Nutrition goals with preserved tables and numbers",
+                ru: "Цели питания с сохраненными таблицами и цифрами"
+            },
+            statB: {
+                en: "Body-weight rows in every macro table",
+                ru: "Строк веса в каждой макротаблице"
+            },
+            navBulking: { en: "Bulking", ru: "Набор" },
+            navCutting: { en: "Cutting", ru: "Сушка" },
+            navWeightLoss: { en: "Weight loss", ru: "Снижение веса" },
+            tagBulking: { en: "Mass gain", ru: "Набор массы" },
+            bulkingTitle: { en: "Bulking (Muscle Gain)", ru: "Набор (рост мышц)" },
+            bulkingP1: {
+                en: "To build muscle mass, you need a consistent calorie surplus and proper macronutrient distribution: protein, fats, and carbohydrates.",
+                ru: "Чтобы набирать мышечную массу, нужен стабильный профицит калорий и грамотное распределение макронутриентов: белков, жиров и углеводов."
+            },
+            bulkingP2: {
+                en: "The basic principle is simple: eat more than you burn, but in a structured way, not randomly. Calories provide energy and mass, protein builds muscle, fats support hormones, and carbohydrates fuel performance.",
+                ru: "Базовый принцип простой: нужно есть больше, чем ты тратишь, но делать это структурно, а не хаотично. Калории дают энергию и массу, белок строит мышцы, жиры поддерживают гормоны, а углеводы питают результативность."
+            },
+            bulkingP3: {
+                en: "In simple terms, bulking is a controlled slight surplus every day, not overeating.",
+                ru: "Если коротко, набор это контролируемый небольшой профицит каждый день, а не переедание."
+            },
+            macroProtein: { en: "Protein", ru: "Белок" },
+            macroFats: { en: "Fats", ru: "Жиры" },
+            macroCarbs: { en: "Carbohydrates", ru: "Углеводы" },
+            bulkingMacro1: {
+                en: "Around 2 g per kg of body weight for muscle building material.",
+                ru: "Около 2 г на кг массы тела как основной строительный материал для мышц."
+            },
+            bulkingMacro2: {
+                en: "Around 0.9 g per kg for hormonal support and balance.",
+                ru: "Около 0.9 г на кг для гормональной поддержки и баланса."
+            },
+            bulkingMacro3: {
+                en: "The remaining calories for energy and training output.",
+                ru: "Оставшиеся калории уходят в углеводы для энергии и качества тренировок."
+            },
+            bulkingP4: {
+                en: "Muscle growth is not about perfect food. It is about consistency, stable calories, and stable protein intake.",
+                ru: "Рост мышц не строится на идеальной еде. Он строится на стабильности, ровной калорийности и постоянном белке."
+            },
+            bulkingTableTitle: { en: "Bulking macro table", ru: "Таблица макросов для набора" },
+            thWeight: { en: "Weight", ru: "Вес" },
+            thCalories: { en: "Calories", ru: "Калории" },
+            thProtein: { en: "Protein", ru: "Белок" },
+            thFats: { en: "Fats", ru: "Жиры" },
+            thCarbs: { en: "Carbs", ru: "Углеводы" },
+            tagCutting: { en: "Fat loss", ru: "Снижение жира" },
+            cuttingTitle: { en: "Cutting (Body Fat Reduction)", ru: "Сушка (снижение процента жира)" },
+            cuttingP1: {
+                en: "Cutting is the process of reducing body fat percentage while preserving as much muscle mass as possible. The foundation is a negative energy balance.",
+                ru: "Сушка это процесс снижения процента жира при максимальном сохранении мышечной массы. Основа здесь отрицательный энергетический баланс."
+            },
+            cuttingP2: {
+                en: "Calorie balance is the main factor that determines the speed and quality of fat loss.",
+                ru: "Калорийный баланс это главный фактор, который определяет скорость и качество снижения жира."
+            },
+            principleProtein: { en: "Protein", ru: "Белок" },
+            principleFats: { en: "Fats", ru: "Жиры" },
+            principleCarbs: { en: "Carbohydrates", ru: "Углеводы" },
+            cuttingFeature1: {
+                en: "Supports muscle retention and anti-catabolic protection.",
+                ru: "Поддерживает сохранение мышц и анти-катаболическую защиту."
+            },
+            cuttingFeature2: {
+                en: "Support hormonal function and overall health.",
+                ru: "Поддерживают гормональную функцию и общее здоровье."
+            },
+            cuttingFeature3: {
+                en: "Act as the adjustable energy source during the deficit.",
+                ru: "Выступают регулируемым источником энергии во время дефицита."
+            },
+            cuttingNote: {
+                en: "A calorie deficit of 15 to 25 percent from maintenance is usually the best middle ground. Larger deficits increase the risk of muscle loss and strength decline.",
+                ru: "Дефицит в 15-25 процентов от поддержания обычно дает лучший баланс. Более жесткие дефициты повышают риск потери мышц и снижения силы."
+            },
+            cuttingTableTitle: { en: "Cutting macro table", ru: "Таблица макросов для сушки" },
+            tagWeightLoss: { en: "Weight loss", ru: "Снижение веса" },
+            weightLossTitle: { en: "Weight Loss (Fat Reduction)", ru: "Снижение веса (уменьшение жира)" },
+            weightP1: {
+                en: "Weight loss is the process of reducing total body weight through a calorie deficit, where the body uses stored energy to cover the gap.",
+                ru: "Снижение веса это процесс уменьшения общей массы тела через дефицит калорий, когда организм использует накопленную энергию для покрытия разницы."
+            },
+            weightP2: {
+                en: "Unlike aggressive cutting, this approach focuses on sustainability and comfortable long-term progress.",
+                ru: "В отличие от агрессивной сушки, этот подход делает ставку на устойчивость и комфортный долгосрочный прогресс."
+            },
+            weightP3: {
+                en: "If you consistently consume fewer calories than you burn, body weight trends downward.",
+                ru: "Если ты стабильно ешь меньше калорий, чем тратишь, масса тела со временем идет вниз."
+            },
+            weightFeatureTitle1: { en: "Moderate deficit", ru: "Умеренный дефицит" },
+            weightFeature1: { en: "Usually 10 to 20 percent below maintenance.", ru: "Обычно это 10-20 процентов ниже уровня поддержания." },
+            weightFeatureTitle2: { en: "Adherence", ru: "Устойчивость" },
+            weightFeature2: {
+                en: "The plan should be sustainable enough to repeat week after week.",
+                ru: "План должен быть настолько устойчивым, чтобы его можно было повторять неделя за неделей."
+            },
+            weightFeatureTitle3: { en: "Satiety", ru: "Сытость" },
+            weightFeature3: {
+                en: "High-satiety foods make long-term compliance much easier.",
+                ru: "Продукты с высокой сытостью заметно упрощают долгосрочное соблюдение плана."
+            },
+            weightTableTitle: { en: "Weight loss macro table", ru: "Таблица макросов для снижения веса" },
+            footer: {
+                en: "Nutrition numbers stay intact while the wording and interface switch between languages.",
+                ru: "Цифры питания остаются прежними, а текст и интерфейс переключаются между языками."
+            }
+        };
 
+        document.querySelectorAll(".nav-pill").forEach((link) => {
+            link.addEventListener("click", () => {
+                document.querySelectorAll(".nav-pill").forEach((node) => node.classList.remove("is-active"));
+                link.classList.add("is-active");
+            });
+        });
+
+        SiteApp.initPage({ translations });
+
+        window.addEventListener("load", () => {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
