@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerlifting Program</title>
+    <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body style="--accent:#ff5a5f; --accent-rgb:255,90,95;">
+    <main class="site-shell">
+        <div class="site-topbar">
+            <a class="ghost-btn" href="../index.html" data-i18n="back">Back</a>
+            <div class="brand-pill">
+                <span class="brand-pill__dot"></span>
+                <span data-i18n="brand">Perfect Body Guide</span>
+            </div>
+            <div class="lang-switch">
+                <button type="button" data-set-lang="en">EN</button>
+                <button type="button" data-set-lang="ru">RU</button>
+            </div>
+        </div>
+
+        <section class="hero-panel">
+            <div>
+                <div class="eyebrow" data-i18n="eyebrow">Strength calculator</div>
+                <h1 class="hero-title" data-i18n="heroTitle">Powerlifting program</h1>
+                <p class="hero-copy" data-i18n="heroCopy">Enter your 5RM values, choose a week, and the page will keep the original loading logic while presenting it in a cleaner format.</p>
+            </div>
+
+            <div class="hero-side">
+                <div class="stat-card">
+                    <strong>7</strong>
+                    <span data-i18n="statA">Training weeks in the calculator block</span>
+                </div>
+                <div class="stat-card">
+                    <strong>3</strong>
+                    <span data-i18n="statB">Training days with main lifts and accessories</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="two-col">
+            <div class="form-panel">
+                <h2 class="table-title" data-i18n="calcTitle">Input your 5RM</h2>
+                <p class="section-copy" data-i18n="calcCopy">The calculator uses the same original weekly multipliers and set schemes.</p>
+
+                <div class="form-grid" style="margin-top:18px;">
+                    <label>
+                        <span class="field-label" data-i18n="fieldDeadlift">Deadlift</span>
+                        <input id="dl" type="number" min="0" step="0.5" data-i18n-placeholder="fieldPlaceholder" placeholder="Enter weight">
+                    </label>
+                    <label>
+                        <span class="field-label" data-i18n="fieldBench">Bench press</span>
+                        <input id="bp" type="number" min="0" step="0.5" data-i18n-placeholder="fieldPlaceholder" placeholder="Enter weight">
+                    </label>
+                    <label>
+                        <span class="field-label" data-i18n="fieldSquat">Squat</span>
+                        <input id="sq" type="number" min="0" step="0.5" data-i18n-placeholder="fieldPlaceholder" placeholder="Enter weight">
+                    </label>
+                </div>
+
+                <div style="margin-top:18px;">
+                    <span class="field-label" data-i18n="weekLabel">Choose week</span>
+                    <div class="week-tabs" id="weekTabs">
+                        <div class="week-indicator" id="weekIndicator"></div>
+                        <button type="button" class="is-active" data-week="1">1</button>
+                        <button type="button" data-week="2">2</button>
+                        <button type="button" data-week="3">3</button>
+                        <button type="button" data-week="4">4</button>
+                        <button type="button" data-week="5">5</button>
+                        <button type="button" data-week="6">6</button>
+                        <button type="button" data-week="7">7</button>
+                    </div>
+                </div>
+
+                <div class="action-row" style="margin-top:18px;">
+                    <button type="button" class="primary-btn" id="calcBtn" data-i18n="calcButton">Calculate</button>
+                </div>
+            </div>
+
+            <div class="content-panel">
+                <h2 class="table-title" data-i18n="infoTitle">How the block works</h2>
+                <div class="feature-grid" style="margin-top:18px;">
+                    <div class="feature-card">
+                        <strong data-i18n="infoHeavyTitle">Heavy work</strong>
+                        <span data-i18n="infoHeavyCopy">Main lift sets use the heavy percentage for the selected week.</span>
+                    </div>
+                    <div class="feature-card">
+                        <strong data-i18n="infoLightTitle">Light work</strong>
+                        <span data-i18n="infoLightCopy">Secondary main lift sets use the lighter weekly percentage.</span>
+                    </div>
+                    <div class="feature-card">
+                        <strong data-i18n="infoWeek7Title">Week 7</strong>
+                        <span data-i18n="infoWeek7Copy">Accessory volume drops to match the original deload-style change.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-panel" id="programTables" style="margin-top:20px;"></section>
+
+        <footer class="site-footer" data-i18n="footer">The calculation logic stays the same, but the interface is now cleaner and easier to use in both languages.</footer>
+    </main>
+
+    <script src="../assets/site.js"></script>
+    <script>
+        const translations = {
+            __title: { en: "Powerlifting Program", ru: "Пауэрлифтинг-программа" },
+            back: { en: "Back", ru: "Назад" },
+            brand: { en: "Perfect Body Guide", ru: "Гид по идеальному телу" },
+            eyebrow: { en: "Strength calculator", ru: "Силовой калькулятор" },
+            heroTitle: { en: "Powerlifting program", ru: "Пауэрлифтинг-программа" },
+            heroCopy: {
+                en: "Enter your 5RM values, choose a week, and the page will keep the original loading logic while presenting it in a cleaner format.",
+                ru: "Введи свои значения 5RM, выбери неделю, и страница сохранит исходную логику нагрузок, но покажет ее в более чистом формате."
+            },
+            statA: { en: "Training weeks in the calculator block", ru: "Тренировочных недель в калькуляторе" },
+            statB: { en: "Training days with main lifts and accessories", ru: "Тренировочных дней с базой и аксессуарами" },
+            calcTitle: { en: "Input your 5RM", ru: "Введи свой 5RM" },
+            calcCopy: {
+                en: "The calculator uses the same original weekly multipliers and set schemes.",
+                ru: "Калькулятор использует те же исходные недельные коэффициенты и схемы подходов."
+            },
+            fieldDeadlift: { en: "Deadlift", ru: "Становая тяга" },
+            fieldBench: { en: "Bench press", ru: "Жим лежа" },
+            fieldSquat: { en: "Squat", ru: "Присед" },
+            fieldPlaceholder: { en: "Enter weight", ru: "Введи вес" },
+            weekLabel: { en: "Choose week", ru: "Выбери неделю" },
+            calcButton: { en: "Calculate", ru: "Рассчитать" },
+            infoTitle: { en: "How the block works", ru: "Как работает блок" },
+            infoHeavyTitle: { en: "Heavy work", ru: "Тяжелая работа" },
+            infoHeavyCopy: {
+                en: "Main lift sets use the heavy percentage for the selected week.",
+                ru: "Основные тяжелые подходы используют тяжелый процент выбранной недели."
+            },
+            infoLightTitle: { en: "Light work", ru: "Легкая работа" },
+            infoLightCopy: {
+                en: "Secondary main lift sets use the lighter weekly percentage.",
+                ru: "Вторые основные движения используют более легкий недельный процент."
+            },
+            infoWeek7Title: { en: "Week 7", ru: "Неделя 7" },
+            infoWeek7Copy: {
+                en: "Accessory volume drops to match the original deload-style change.",
+                ru: "Объем аксессуаров падает, как и в исходной версии блока."
+            },
+            footer: {
+                en: "The calculation logic stays the same, but the interface is now cleaner and easier to use in both languages.",
+                ru: "Логика расчета остается прежней, но интерфейс теперь чище и удобнее на обоих языках."
+            },
+            tableExercise: { en: "Exercise", ru: "Упражнение" },
+            tableSets: { en: "Sets", ru: "Подходы" },
+            tableWeight: { en: "Weight", ru: "Вес" },
+            tableRpe: { en: "RPE", ru: "RPE" },
+            day1: { en: "Day 1", ru: "День 1" },
+            day2: { en: "Day 2", ru: "День 2" },
+            day3: { en: "Day 3", ru: "День 3" }
+        };
+
+        const accessoryOptions = {
+            day1: [
+                { en: "Pull-ups", ru: "Подтягивания" },
+                { en: "Lat Pulldown", ru: "Тяга сверху" },
+                { en: "Machine Vertical Row", ru: "Вертикальная тяга в тренажере" }
+            ],
+            day2: [
+                { en: "Dumbbell Shoulder Press", ru: "Жим гантелей сидя" },
+                { en: "Handstand Push-ups", ru: "Отжимания в стойке" },
+                { en: "Kettlebell Press", ru: "Жим гири" },
+                { en: "One-arm Dumbbell Press", ru: "Жим гантели одной рукой" },
+                { en: "Barbell Overhead Press", ru: "Жим штанги вверх" }
+            ],
+            day3: [
+                { en: "Dumbbell Row", ru: "Тяга гантели" },
+                { en: "Barbell Row", ru: "Тяга штанги" },
+                { en: "Seated Cable Row", ru: "Тяга блока сидя" },
+                { en: "Machine Row", ru: "Тяга в тренажере" }
+            ]
+        };
+
+        const dayDefinitions = [
+            {
+                key: "day1",
+                title: translations.day1,
+                rows: [
+                    { label: { en: "Deadlift", ru: "Становая тяга" }, setsId: "dl_sets", weightId: "dl_w", baseSets: "5x5", kind: "heavy" },
+                    { label: { en: "Bench press", ru: "Жим лежа" }, setsId: "bp_sets", weightId: "bp_w", baseSets: "4x6", kind: "light" },
+                    { selectKey: "day1", setsId: "acc1_sets", baseSets: "3x6-10", rpeId: "acc1_rpe", baseRpe: "7" },
+                    { label: { en: "Abs", ru: "Пресс" }, setsId: "abs1_sets", baseSets: "3x6-10", rpe: "8" }
+                ]
+            },
+            {
+                key: "day2",
+                title: translations.day2,
+                rows: [
+                    { label: { en: "Bench press", ru: "Жим лежа" }, setsId: "bp2_sets", weightId: "bp2_w", baseSets: "5x5", kind: "heavy" },
+                    { label: { en: "Squat", ru: "Присед" }, setsId: "sq_sets", weightId: "sq_w", baseSets: "4x6", kind: "light" },
+                    { selectKey: "day2", setsId: "acc2_sets", baseSets: "3x6-10", rpeId: "acc2_rpe", baseRpe: "7" },
+                    { label: { en: "Arms", ru: "Руки" }, setsId: "arms_sets", baseSets: "3x6-10", rpeId: "arms_rpe", baseRpe: "8" }
+                ]
+            },
+            {
+                key: "day3",
+                title: translations.day3,
+                rows: [
+                    { label: { en: "Squat", ru: "Присед" }, setsId: "sq2_sets", weightId: "sq2_w", baseSets: "5x5", kind: "heavy" },
+                    { label: { en: "Deadlift", ru: "Становая тяга" }, setsId: "dl2_sets", weightId: "dl2_w", baseSets: "4x6", kind: "light" },
+                    { selectKey: "day3", setsId: "acc3_sets", baseSets: "3x6-10", rpeId: "acc3_rpe", baseRpe: "7" },
+                    { label: { en: "Abs", ru: "Пресс" }, setsId: "abs2_sets", baseSets: "3x6-10", rpe: "8" }
+                ]
+            }
+        ];
+
+        const heavy = { 1: 0.90, 2: 0.925, 3: 0.95, 4: 0.975, 5: 1, 6: 1.025, 7: 1.05 };
+        const light = { 1: 0.75, 2: 0.70, 3: 0.80, 4: 0.70, 5: 0.65, 6: 0.70, 7: 0.75 };
+        const heavySets = { 1: "5x5", 2: "5x5", 3: "5x5", 4: "5x5", 5: "5x5", 6: "3x3", 7: "2x2" };
+        const lightSets = { 1: "4x6", 2: "5x5", 3: "4x4", 4: "4x8", 5: "5x6", 6: "5x5", 7: "3x3" };
+
+        let currentWeek = 1;
+
+        function renderWeekIndicator() {
+            const indicator = document.getElementById("weekIndicator");
+            indicator.style.transform = `translateX(calc((100% + 8px) * ${currentWeek - 1}))`;
+            document.querySelectorAll("[data-week]").forEach((button) => {
+                button.classList.toggle("is-active", Number(button.dataset.week) === currentWeek);
+            });
+        }
+
+        function renderProgramTables(lang) {
+            const root = document.getElementById("programTables");
+            root.innerHTML = dayDefinitions.map((day) => `
+                <div class="content-panel" style="margin-bottom:18px;">
+                    <h2 class="table-title">${day.title[lang]}</h2>
+                    <div class="table-wrap" style="margin-top:14px;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>${translations.tableExercise[lang]}</th>
+                                    <th>${translations.tableSets[lang]}</th>
+                                    <th>${translations.tableWeight[lang]}</th>
+                                    <th>${translations.tableRpe[lang]}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${day.rows.map((row) => {
+                                    if (row.selectKey) {
+                                        return `
+                                            <tr>
+                                                <td>
+                                                    <select id="${row.selectKey}">
+                                                        ${accessoryOptions[row.selectKey].map((option) => `<option value="${option.en}">${option[lang]}</option>`).join("")}
+                                                    </select>
+                                                </td>
+                                                <td id="${row.setsId}">${row.baseSets}</td>
+                                                <td>-</td>
+                                                <td id="${row.rpeId}">${row.baseRpe}</td>
+                                            </tr>
+                                        `;
+                                    }
+
+                                    return `
+                                        <tr>
+                                            <td>${row.label[lang]}</td>
+                                            <td id="${row.setsId}">${row.baseSets}</td>
+                                            <td id="${row.weightId || ""}">${row.weightId ? "-" : "-"}</td>
+                                            <td>${row.rpe || "-"}</td>
+                                        </tr>
+                                    `;
+                                }).join("")}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function calc() {
+            const dl = Number.parseFloat(document.getElementById("dl").value) || 0;
+            const bp = Number.parseFloat(document.getElementById("bp").value) || 0;
+            const sq = Number.parseFloat(document.getElementById("sq").value) || 0;
+            const week = currentWeek;
+
+            const values = {
+                dl_w: (dl * heavy[week]).toFixed(1) + " kg",
+                bp_w: (bp * light[week]).toFixed(1) + " kg",
+                bp2_w: (bp * heavy[week]).toFixed(1) + " kg",
+                sq_w: (sq * light[week]).toFixed(1) + " kg",
+                sq2_w: (sq * heavy[week]).toFixed(1) + " kg",
+                dl2_w: (dl * light[week]).toFixed(1) + " kg"
+            };
+
+            Object.entries(values).forEach(([id, value]) => {
+                const node = document.getElementById(id);
+                if (node) {
+                    node.textContent = value;
+                }
+            });
+
+            ["dl_sets", "bp2_sets", "sq2_sets"].forEach((id) => {
+                document.getElementById(id).textContent = heavySets[week];
+            });
+
+            ["bp_sets", "sq_sets", "dl2_sets"].forEach((id) => {
+                document.getElementById(id).textContent = lightSets[week];
+            });
+
+            ["acc1_sets", "acc2_sets", "acc3_sets", "arms_sets", "abs1_sets", "abs2_sets"].forEach((id) => {
+                document.getElementById(id).textContent = "3x6-10";
+            });
+
+            ["acc1_rpe", "acc2_rpe", "acc3_rpe"].forEach((id) => {
+                document.getElementById(id).textContent = "7";
+            });
+
+            document.getElementById("arms_rpe").textContent = "8";
+
+            if (week === 7) {
+                ["acc1_sets", "acc2_sets", "acc3_sets"].forEach((id) => {
+                    document.getElementById(id).textContent = "2x5";
+                });
+                document.getElementById("arms_sets").textContent = "2x6-10";
+
+                ["acc1_rpe", "acc2_rpe", "acc3_rpe", "arms_rpe"].forEach((id) => {
+                    document.getElementById(id).textContent = "6";
+                });
+            }
+        }
+
+        document.getElementById("weekTabs").addEventListener("click", (event) => {
+            const button = event.target.closest("[data-week]");
+            if (!button) {
+                return;
+            }
+
+            currentWeek = Number(button.dataset.week);
+            renderWeekIndicator();
+            calc();
+        });
+
+        document.getElementById("calcBtn").addEventListener("click", calc);
+
+        SiteApp.initPage({
+            translations,
+            onLanguageChange: (lang) => {
+                renderProgramTables(lang);
+                renderWeekIndicator();
+                calc();
+            }
+        });
+    </script>
+</body>
+</html>
